@@ -1,0 +1,4 @@
+botcity-framework-web
+botcity-framework-core
+pandas
+openpyxl
