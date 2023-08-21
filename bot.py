@@ -12,6 +12,7 @@ import pandas as pd
 from botcity.web import WebBot, Browser, By
 from botcity.web.browsers.firefox import default_options
 from botcity.core import DesktopBot
+from botcity.maestro import *
 
 user_dir = "C:/Users/riicl/AppData/Roaming/Mozilla/Firefox/Profiles/bacw97z8.default-release"
 entrada = 'Você poderia gerar no formato json com nome "produtos" os dados de 3 produtos eletrôncios ' \
@@ -136,6 +137,21 @@ def cadastra_produtos(data_frame: pandas.DataFrame):
 
 
 def main():
+   maestro = BotMaestroSDK().from_sys_args()
+   execution = maestro.get_execution()
+
+   maestro.alert(
+       task_id=execution.task_id,
+       title="Inicio do processo",
+       message='Processo de casdastro dos produtos foi iniciado!',
+       alert_type = AlertType.INFO
+   )
+   maestro.finish_task(
+        task_id=execution.task_id,
+        message="Processo Finalizado",
+        status=AutomationTaskFinishStatus.SUCCESS
+   )
+
    dados_produtos=(coleta_dados_produtos())
    cadastra_produtos(dados_produtos)
 

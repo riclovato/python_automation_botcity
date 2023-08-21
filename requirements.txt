@@ -1,4 +1,5 @@
 botcity-framework-web
 botcity-framework-core
+botcity-maestro-sdk
 pandas
 openpyxl
